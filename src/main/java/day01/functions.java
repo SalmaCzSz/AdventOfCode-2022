@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.stream.Collector;
 
 /**
  *
@@ -28,8 +27,8 @@ public class functions {
             
             /* lectura del archivo */
             if(lee.ready()){
-                // System.out.println("" + dato.toString());
                 while((dato = lee.readLine()) != null){
+                    // System.out.println("" + dato.toString());
                     if(!dato.isEmpty()){
                         caloriasElfo += Integer.parseInt(dato);
                     } else {
@@ -56,18 +55,13 @@ public class functions {
             }
         }
         
-        System.out.println("El elfo que lleva más calorias es el " + numElfo + " (" + caloriasMax + " calorias).");
+        System.out.println("El elfo que lleva más calorias es el " + numElfo + " (" + caloriasMax + " calorias)");
     }   
     
     public void calculaTresMayores(){
         int totalCalorias = 0;
         /* ordenamos la lista */
-        elfo.sort(new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                return o2.compareTo(o1);
-            }
-        });
+        elfo.sort((Integer o1, Integer o2) -> o2.compareTo(o1));
         
         /* sumamos calorias */
         for(int i = 0 ; i < 3; i++){
